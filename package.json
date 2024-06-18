@@ -1,0 +1,55 @@
+{
+  "name": "time-tracker-backend-ddd",
+  "version": "1.0.0",
+  "author": "Gyga",
+  "scripts": {
+    "lint": "eslint . --fix",
+    "build": "npx tsc",
+    "start": "node -r source-map-support/register build/cmd/main",
+    "start:dry": "node -r dotenv/config -r source-map-support/register build/cmd/main",
+    "local": "nodemon -r dotenv/config cmd/main.ts",
+    "migrate:sql:make": "knex migrate:make -x ts --migrations-directory ./internal/db/sql/migrations",
+    "migrate:sql:up": "node ./node_modules/knex/bin/cli.js migrate:latest --knexfile ./internal/db/sql/config.ts",
+    "migrate:sql:up:local": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:latest --knexfile ./internal/db/sql/config.ts",
+    "seed:sql:make": "knex seed:make -x ts --cwd ./internal/db/sql",
+    "seed:sql:up": "node ./node_modules/knex/bin/cli.js seed:run --knexfile ./internal/db/sql/config.ts",
+    "seed:sql:up:local": "node -r dotenv/config ./node_modules/knex/bin/cli.js seed:run --knexfile ./internal/db/sql/config.ts"
+  },
+  "nodemonConfig": {
+    "ext": "js, ts, json, yml, yaml"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.577.0",
+    "@aws-sdk/s3-request-presigner": "^3.577.0",
+    "@fastify/auth": "^4.6.1",
+    "@fastify/cors": "^9.0.1",
+    "@fastify/jwt": "^8.0.1",
+    "@fastify/swagger": "^8.14.0",
+    "@fastify/swagger-ui": "^3.0.0",
+    "autobind-decorator": "^2.4.0",
+    "axios": "^1.6.8",
+    "fastify": "^4.27.0",
+    "fastify-type-provider-zod": "^1.1.9",
+    "generate-api-key": "^1.0.2",
+    "ioredis": "^5.4.1",
+    "knex": "^3.1.0",
+    "pg": "^8.11.5",
+    "source-map-support": "^0.5.21",
+    "swagger-jsdoc": "^6.2.8",
+    "ts-node": "^10.9.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@typescript-eslint/eslint-plugin": "^7.9.0",
+    "@typescript-eslint/parser": "^7.9.0",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "nodemon": "^3.1.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-organize-imports": "^3.2.4"
+  }
+}
