@@ -3,4 +3,5 @@ dist
 build
 .env
 .idea
+.vscode
 tsconfig.tsbuildinfo
