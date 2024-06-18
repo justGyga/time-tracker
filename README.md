@@ -11,7 +11,7 @@ There is a user who wants to track the time of his work. This requires the exist
 ## Work with system
 
 ### File naming:
-Use `kebab case` (words use low keys and separeted by `-`)
+Use `kebab case` (words use low keys and separated by `-`)
 
 ### scripts:
 ```sh
