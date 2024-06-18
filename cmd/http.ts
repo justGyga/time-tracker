@@ -7,6 +7,7 @@ import { FastifyInstance, fastify } from "fastify";
 import { AppErrorPipe, AppValidator } from "../app/http/config/pipe";
 import { swaggerOption, swaggerUiOption } from "../app/http/config/swagger";
 import { HttpProvider } from "../app/http/routes/_index";
+import { printInfo } from "../internal/common/functions/print";
 
 export const app: FastifyInstance = fastify();
 
@@ -22,5 +23,5 @@ export const runHttpServer = async (): Promise<void> => {
 
     HttpProvider.forEach((router) => app.register(router.instance, { prefix: router.prefix }));
     await app.listen({ host: "0.0.0.0", port: PORT });
-    console.info(`[Http] app is running on port ${PORT}`);
+    printInfo(`[Http] app is running on port ${PORT}`);
 };
