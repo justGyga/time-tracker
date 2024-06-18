@@ -5,3 +5,5 @@ import { User } from "./entity";
 export type UserWhereBuilder = WhereBuilderFactory<User>;
 
 export type UserSystemMeta = DefaultMeta;
+
+export interface IUserCreate extends Omit<User, "id" | "created"> {}
